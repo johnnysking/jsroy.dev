@@ -5,13 +5,13 @@
     import { createEventDispatcher, onMount } from 'svelte';
     let explosionFinished = false;
     let fadeFinished = false;
-    const dispatch = createEventDispatcher();
+    // const dispatch = createEventDispatcher();
 
-    onMount(() => {
-        setTimeout(() => {
-        dispatch('animationFinish');
-        }, 3000); // Adjust the delay time as needed
-    });
+    // onMount(() => {
+    //     setTimeout(() => {
+    //     dispatch('animationFinish');
+    //     }, 3000); // Adjust the delay time as needed
+    // });
 </script>
 
 {#if !explosionFinished}
