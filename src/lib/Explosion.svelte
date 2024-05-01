@@ -1,30 +1,29 @@
 <script>
-  import { onMount } from 'svelte';
+   import { onMount } from 'svelte';
 
-  let animationFinished = false;
-
-  onMount(() => {
-    setTimeout(() => {
-      animationFinished = true;
-    }, 3000);
-  });
+onMount(() => {
+  setTimeout(() => {
+    const event = new CustomEvent('explosionFinish');
+    window.dispatchEvent(event);
+  }, 3000); // Adjust the delay time as needed
+});
 </script>
 
-<div class="container">
-  {#if !animationFinished}
+<div class="container">  
     {#each Array.from({ length: 100 }) as _, i}
       <div class="cube" style="left: {Math.random() * 100}vw; top: {Math.random() * 100}vh; animation-duration: {Math.random() * 2 + 1}s;"></div>
-    {/each}
-  {/if}
+    {/each}  
 </div>
 
 <style>
   .container {
-    position: relative;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     background-color: #000;
     overflow: hidden;
+    left: 0;
+    top: 0;
   }
 
   .cube {
