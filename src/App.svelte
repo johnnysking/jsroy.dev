@@ -14,7 +14,13 @@
   {#if !explosionFinished}
     <Explosion on:explosionFinish={() => explosionFinished = true} />
   {:else}
+    {#if !fadeFinished}
+      <div transition:fly={{ y: 600, duration: 1200 }}>
         <Fade on:animationFinish={() => console.log('finished')} />
+      </div>
+    {:else}
+     <!-- what comes next? -->
+     {/if}
   {/if}
 </main>
 
