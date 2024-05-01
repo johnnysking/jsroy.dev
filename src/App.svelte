@@ -10,9 +10,9 @@
 </script>
 
 <main>
-  <Explosion on:explosionFinish={handleExplosionFinish} />
-  {#if explosionFinished}
-    <Fade />
+  {#if !explosionFinished}
+    <Explosion on:explosionFinish={() => explosionFinished = true} />
+  {:else}
   {/if}
 </main>
 
