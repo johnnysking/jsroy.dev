@@ -1,13 +1,11 @@
 <script>
+  import { fly } from 'svelte/transition';
   import Explosion from './lib/Explosion.svelte';
   import Fade from './lib/Fade.svelte';
   
   let explosionFinished = false;
   let fadeFinished = false;
 
-  function handleExplosionFinish() {
-    explosionFinished = true;
-  }
 </script>
 
 <main>
