@@ -17,7 +17,7 @@
 </div>
 
 <style>
-  body, html {
+  /* body, html {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -25,9 +25,9 @@
     background-color: #000;
     overflow: hidden;
     position: relative;
-  }
+  } */
 
-  .content {
+  /* .content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -36,6 +36,6 @@
     color: #fff;
     opacity: 1;
     animation: fadeDown 5s ease forwards;
-  }
+  } */
 
 </style>
