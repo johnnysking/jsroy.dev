@@ -1,10 +1,11 @@
 <script>
-   import { onMount } from 'svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
+  
+  const dispatch = createEventDispatcher();
 
 onMount(() => {
   setTimeout(() => {
-    const event = new CustomEvent('explosionFinish');
-    window.dispatchEvent(event);
+    dispatch('explosionFinish');
   }, 3000); // Adjust the delay time as needed
 });
 </script>

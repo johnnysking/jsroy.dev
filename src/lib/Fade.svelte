@@ -1,18 +1,17 @@
 <!-- Fade.svelte -->
 
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, createEventDispatcher } from 'svelte';
 
-  let animationFinished = false;
-
+  const dispatch = createEventDispatcher();
   onMount(() => {
     setTimeout(() => {
-      animationFinished = true;
+      dispatch('animationFinish');
     }, 5000); // Adjust the delay time as needed
   });
 </script>
 
-<div class="{animationFinished ? 'content' : 'content hidden'}">
+<div>
   <h1>Jean-Sébastien Roy</h1>
   <h2>Développeur Web</h2>
 </div>
@@ -39,18 +38,4 @@
     animation: fadeDown 5s ease forwards;
   }
 
-  @keyframes fadeDown {
-    0% {
-      opacity: 1;
-      transform: translate(-50%, -50%);
-    }
-    100% {
-      opacity: 0;
-      transform: translate(-50%, 100%);
-    }
-  }
-
-  .hidden {
-    display: none;
-  }
 </style>
