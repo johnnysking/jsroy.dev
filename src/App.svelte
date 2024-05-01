@@ -2,6 +2,7 @@
   import { fly } from 'svelte/transition';
   import Explosion from './lib/Explosion.svelte';
   import Fade from './lib/Fade.svelte';
+  import Homepage from './lib/Homepage.svelte';
   
   let explosionFinished = false;
   let fadeFinished = false;
@@ -20,6 +21,7 @@
      <!-- what comes next? -->
      {/if}
   {/if}
+  <Homepage />
 </main>
 
 <style>
