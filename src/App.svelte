@@ -1,6 +1,6 @@
 <script>
- import Explosion from '../components/Explosion.svelte';
- import Fade from '../components/Fade.svelte';
+ import Explosion from './lib/Explosion.svelte';
+ import Fade from './lib/Fade.svelte';
 </script>
 
 <main>
