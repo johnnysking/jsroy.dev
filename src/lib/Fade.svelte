@@ -1,4 +1,3 @@
-<!-- src/components/Fade.svelte -->
 <script>
     import { onMount } from 'svelte';
   
@@ -7,9 +6,14 @@
     onMount(() => {
       setTimeout(() => {
         animationFinished = true;
-      }, 5000); // Adjust the delay time (in milliseconds) to match the animation duration
+      }, 5000);
     });
-  </script>
+  </script> 
+  
+  <div class="content {animationFinished ? 'hidden' : ''}">
+    <h1>Jean-Sébastien Roy</h1>
+    <h2>Développeur Web</h2>
+  </div>
   
   <style>
     body, html {
@@ -48,9 +52,3 @@
       display: none;
     }
   </style>
-  
-  <div class="content {animationFinished ? 'hidden' : ''}">
-    <h1>Jean-Sébastien Roy</h1>
-    <h2>Développeur Web</h2>
-  </div>
-  
