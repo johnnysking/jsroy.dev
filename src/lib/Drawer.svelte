@@ -1,6 +1,5 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import Carousel from './Carousel.svelte';
     export let isOpen = false;
     const dispatch = createEventDispatcher();
   
@@ -9,27 +8,16 @@
     }
   </script>
   
-  
-  
-  {#if isOpen}
-    <div class="overlay" on:click={closeDrawer}></div>
-  {/if}
-  
-  <div class={`drawer ${isOpen ? 'open' : ''}`}>    
-    <h2>Portfolio</h2>
-    <Carousel />
-  </div>
-  
   <style>
     .drawer {
       position: fixed;
       top: 0;
-      left: 0;
+      right: 0;
       height: 100vh;
       width: 90vw;
-      background: rgb(212, 212, 212);
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-      transform: translateX(-100%);
+      background: white;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+      transform: translateX(100%);
       transition: transform 0.3s ease;
       z-index: 1000;
     }
@@ -48,3 +36,13 @@
       z-index: 999;
     }
   </style>
+  
+  {#if isOpen}
+    <div class="overlay" on:click={closeDrawer}></div>
+  {/if}
+  
+  <div class={`drawer ${isOpen ? 'open' : ''}`}>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeUIZ3nhBlsgR8JhM_9fhelzpFCB_PVU6VfhWCu9FvPRVZSeg/viewform?usp=sf_link"
+            width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+  </div>
+  

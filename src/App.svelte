@@ -1,6 +1,6 @@
 <script>
   import Homepage from './lib/Homepage.svelte';
-  import Animation from './lib/Animation.svelte'  
+  import Animation from './lib/Animation.svelte';  
 </script>
 
 <main>
