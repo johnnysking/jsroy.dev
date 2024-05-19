@@ -2,8 +2,8 @@
     let projects = [
       {
         name: "Aux Points",
-        image: "./assets/AUXPOINTS.png",
-        link: "www.auxpoints.com",
+        image: "./assets/auxpoints.png",
+        link: "https://www.auxpoints.com",
       },
       {
         name: "Project 2",

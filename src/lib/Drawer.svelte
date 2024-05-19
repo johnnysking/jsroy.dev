@@ -8,6 +8,17 @@
     }
   </script>
   
+  
+  
+  {#if isOpen}
+    <div class="overlay" on:click={closeDrawer}></div>
+  {/if}
+  
+  <div class={`drawer ${isOpen ? 'open' : ''}`}>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeUIZ3nhBlsgR8JhM_9fhelzpFCB_PVU6VfhWCu9FvPRVZSeg/viewform?usp=sf_link"
+            width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+  </div>
+  
   <style>
     .drawer {
       position: fixed;
@@ -36,13 +47,3 @@
       z-index: 999;
     }
   </style>
-  
-  {#if isOpen}
-    <div class="overlay" on:click={closeDrawer}></div>
-  {/if}
-  
-  <div class={`drawer ${isOpen ? 'open' : ''}`}>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeUIZ3nhBlsgR8JhM_9fhelzpFCB_PVU6VfhWCu9FvPRVZSeg/viewform?usp=sf_link"
-            width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-  </div>
-  
