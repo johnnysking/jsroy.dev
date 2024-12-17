@@ -7,7 +7,7 @@
   onMount(() => {
     setTimeout(() => {
       dispatch('animationFinish');
-    }, 5000); // Adjust the delay time as needed
+    }, 5000); 
   });
 </script>
 
