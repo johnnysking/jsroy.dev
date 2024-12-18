@@ -59,7 +59,7 @@
 
   /* Button hover effect */
   button:hover {
-    border-color: #646cff;
+    border-color: #fefefe;
   }
 
   /* Focus effect */

@@ -14,7 +14,9 @@
 {/if}
 
 <div class={`drawer ${isOpen ? 'open' : ''}`}>    
-  <button class="close-button" on:click={closeDrawer}>X</button>
+  <button class="close-button" on:click={closeDrawer}>
+    <span class="close-icon">X</span>
+  </button>
   <!-- <h2>Portfolio</h2> -->
   <Carousel />
 </div>
@@ -26,7 +28,7 @@
     left: 0;
     height: 100vh;
     width: 90vw;
-    background: rgb(20, 19, 19);
+    background: rgb(0, 0, 0);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
@@ -58,10 +60,22 @@
     font-size: 30px;
     cursor: pointer;
     z-index: 1001;
+    padding: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  .close-button:hover {
-    color: red;
+  .close-button:hover .close-icon {
+    transform: rotate(90deg); /* Rotate the X */
+  }
+
+  .close-button:active {
+    transform: scale(0.9); /* Slightly shrink on click */
+    opacity: 0.8; /* Reduce opacity on click */
+  }
+
+  .close-icon {
+    display: inline-block;
+    transition: transform 0.3s ease; /* Smooth rotation */
   }
 
   h2 {
