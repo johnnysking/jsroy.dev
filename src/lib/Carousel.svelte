@@ -1,5 +1,5 @@
 <script>
-  import expFlora from './assets/expFlora.png';
+  import expFlora from 'src/assets/expFlora.png';
 
 
   let projects = [
