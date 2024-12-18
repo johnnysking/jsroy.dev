@@ -1,8 +1,11 @@
 <script>
+  import expFlora from './assets/expFlora.png';
+
+
   let projects = [
     {
       name: "Expérience Flora",
-      image: "src/assets/expFlora.png",
+      image: expFlora,
       link: "https://experienceflora.ca/",
     },
     {
