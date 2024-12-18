@@ -1,22 +1,31 @@
-<script>
+<script>  
+  import saindons1 from '/src/assets/saindons1.png'; 
+  import elaineRoy from '/src/assets/elaineRoy.png';
   import expFlora from '/src/assets/expFlora.png';
+  import diversifiedFarm from '/src/assets/diversifiedFarm.png';
+  
 
 
   let projects = [
     {
+      name: "Suzanne Saindon", 
+      image: saindons1,      
+      link: "https://saindons.art/",
+    },
+    {
+      name: "Élaine Roy, élection 2024",
+      image: elaineRoy,
+      link: "https://elaineroy.github.io/election2024/",
+    },
+    {
       name: "Expérience Flora",
       image: expFlora,
       link: "https://experienceflora.ca/",
-    },
+    },    
     {
-      name: "Diversified Farm",
-      image: "src/assets/diversifiedFarm.png",
+      name: "Diversified farm",
+      image: diversifiedFarm,
       link: "https://diversified-farm.myshopify.com/",
-    },
-    {
-      name: "Project 3",
-      image: "./assets/project3.jpg",
-      link: "https://example.com/project3",
     },
   ];
 
