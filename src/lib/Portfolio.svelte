@@ -31,7 +31,7 @@
     background: rgb(0, 0, 0);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    transition: transform 1.5s ease;
     z-index: 1000;
     padding: 20px;
   }

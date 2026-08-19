@@ -170,6 +170,7 @@ button:hover {
   margin-top: 10px;
   transition: color 0.3s;
 }
+
 .project-url a:visited {
   color: #edf0f4; /* Ensure visited links stay white */
 }
