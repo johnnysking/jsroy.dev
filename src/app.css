@@ -301,6 +301,150 @@ body {
   }
 }
 
+/* Viewport, scrolling and safe-area support. */
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto;
+}
+
+.fade-intro {
+  height: 100vh;
+  height: 100dvh;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+    env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+
+.main-content {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.container {
+  height: auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  padding-top: calc(2rem + env(safe-area-inset-top, 0px));
+  padding-right: calc(2rem + env(safe-area-inset-right, 0px));
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  padding-left: calc(2rem + env(safe-area-inset-left, 0px));
+}
+
+.drawer {
+  width: min(100%, 500px);
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+}
+
+.drawer-header {
+  padding-top: calc(2rem + env(safe-area-inset-top, 0px));
+  padding-right: calc(2rem + env(safe-area-inset-right, 0px));
+  padding-left: calc(2rem + env(safe-area-inset-left, 0px));
+}
+
+.drawer-content {
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-right: calc(2rem + env(safe-area-inset-right, 0px));
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  padding-left: calc(2rem + env(safe-area-inset-left, 0px));
+}
+
+.contact-value,
+.contact-value a,
+.project-title,
+.project-title a,
+.project-description {
+  overflow-wrap: anywhere;
+}
+
+.project,
+.project-image-link {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.project-image {
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 350 / 180;
+  object-fit: cover;
+}
+
+.form-input,
+.form-textarea {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+}
+
+.form-submit,
+.close-btn {
+  min-height: 44px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+    padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+  }
+
+  .drawer {
+    width: 100%;
+    max-width: none;
+  }
+
+  .drawer-header {
+    padding-top: calc(1.5rem + env(safe-area-inset-top, 0px));
+    padding-right: calc(1.5rem + env(safe-area-inset-right, 0px));
+    padding-left: calc(1.5rem + env(safe-area-inset-left, 0px));
+  }
+
+  .drawer-content {
+    padding-top: 1.5rem;
+    padding-right: calc(1.5rem + env(safe-area-inset-right, 0px));
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    padding-left: calc(1.5rem + env(safe-area-inset-left, 0px));
+  }
+
+  .text-button {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .drawer-header {
+    padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+    padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+    padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+  }
+
+  .drawer-content {
+    padding-top: 1rem;
+    padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+  }
+}
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: 1fr;
