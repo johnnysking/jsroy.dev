@@ -2,8 +2,8 @@
   export let slowGrid = false;
   export let onOpenDrawer = () => {};
 
-  function openDrawer(drawerName) {
-    onOpenDrawer(drawerName);
+  function openDrawer(drawerName, event) {
+    onOpenDrawer(drawerName, event.currentTarget);
   }
 </script>
 
@@ -34,14 +34,14 @@
         class="text-button"
         id="portfolioBtn"
         aria-label="Voir mon portfolio"
-        on:click|preventDefault={() => openDrawer('portfolio')}
+        on:click|preventDefault={(event) => openDrawer('portfolio', event)}
       >Portfolio</a>
       <a
         href="#contact"
         class="text-button"
         id="contactBtn"
         aria-label="Me contacter"
-        on:click|preventDefault={() => openDrawer('contact')}
+        on:click|preventDefault={(event) => openDrawer('contact', event)}
       >Contact</a>
     </nav>
   </section>

@@ -7,20 +7,26 @@
   import Portfolio from './lib/Portfolio.svelte';
 
   let activeDrawer = null;
+  let isClosing = false;
   let isSlowGrid = false;
+  let drawerOpener = null;
 
-  function openDrawer(drawerName) {
+  function openDrawer(drawerName, opener) {
+    drawerOpener = opener;
     activeDrawer = drawerName;
   }
 
   function closeDrawer() {
-    activeDrawer = null;
+    if (activeDrawer === null || isClosing) {
+      return;
+    }
+
+    isClosing = true;
   }
 
-  function handleKeydown(event) {
-    if (event.key === 'Escape') {
-      closeDrawer();
-    }
+  function finishClosing() {
+    activeDrawer = null;
+    isClosing = false;
   }
 
   function handleDocumentClick(event) {
@@ -34,23 +40,23 @@
   }
 
   onMount(() => {
-    document.addEventListener('keydown', handleKeydown);
     document.addEventListener('click', handleDocumentClick);
 
     return () => {
-      document.removeEventListener('keydown', handleKeydown);
       document.removeEventListener('click', handleDocumentClick);
     };
   });
 
 </script>
 
-<Intro />
-<Homepage slowGrid={isSlowGrid} onOpenDrawer={openDrawer} />
+<div inert={activeDrawer !== null} aria-hidden={activeDrawer !== null}>
+  <Intro />
+  <Homepage slowGrid={isSlowGrid} onOpenDrawer={openDrawer} />
+</div>
 
 <div
   class="overlay"
-  class:visible={activeDrawer !== null}
+  class:visible={activeDrawer !== null && !isClosing}
   aria-hidden="true"
   on:click={closeDrawer}
 ></div>
@@ -58,18 +64,22 @@
 <Drawer
   title="Contact"
   titleId="contactTitle"
-  closeLabel="Fermer le formulaire de contact"
-  isOpen={activeDrawer === 'contact'}
+  closeLabel="Fermer le panneau Contact"
+  isOpen={activeDrawer === 'contact' && !isClosing}
+  returnFocusTo={drawerOpener}
   on:close={closeDrawer}
+  on:closed={finishClosing}
 >
   <Contact />
 </Drawer>
 <Drawer
   title="Portfolio"
   titleId="portfolioTitle"
-  closeLabel="Fermer le portfolio"
-  isOpen={activeDrawer === 'portfolio'}
+  closeLabel="Fermer le panneau Portfolio"
+  isOpen={activeDrawer === 'portfolio' && !isClosing}
+  returnFocusTo={drawerOpener}
   on:close={closeDrawer}
+  on:closed={finishClosing}
 >
   <Portfolio />
 </Drawer>
