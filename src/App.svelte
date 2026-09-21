@@ -3,6 +3,7 @@
   import Drawer from './lib/Drawer.svelte';
   import Homepage from './lib/Homepage.svelte';
   import Intro from './lib/Intro.svelte';
+  import Portfolio from './lib/Portfolio.svelte';
 
   let activeDrawer = null;
   let isSlowGrid = false;
@@ -66,4 +67,6 @@
   closeLabel="Fermer le portfolio"
   isOpen={activeDrawer === 'portfolio'}
   on:close={closeDrawer}
-/>
+>
+  <Portfolio />
+</Drawer>

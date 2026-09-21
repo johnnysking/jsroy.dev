@@ -278,6 +278,68 @@ body {
   visibility: visible;
 }
 
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.project {
+  border: 1px solid #333333;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.project:hover {
+  border-color: #555555;
+}
+
+.project-image-link {
+  display: block;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 350px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  color: #cccccc;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.project-title a {
+  color: #ffffff !important;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.project-title a:hover,
+.project-title a:visited,
+.project-title a:active,
+.project-title a:focus {
+  color: #ffffff !important;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
