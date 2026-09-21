@@ -1,13 +1,7 @@
 <script>
+  import Intro from './lib/Intro.svelte';
   import Homepage from './lib/Homepage.svelte';
-  import Animation from './lib/Animation.svelte';  
 </script>
 
-<main>
-  <Animation />
-  <Homepage />
-</main>
-
-<style>
-  
-</style>
+<Intro />
+<Homepage />
