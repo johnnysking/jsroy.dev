@@ -1,5 +1,18 @@
+<script>
+  export let slowGrid = false;
+  export let onOpenDrawer = () => {};
+
+  function openDrawer(drawerName) {
+    onOpenDrawer(drawerName);
+  }
+</script>
+
 <main class="main-content">
-  <div class="background-grid" aria-hidden="true"></div>
+  <div
+    class="background-grid"
+    style:animation-duration={slowGrid ? '40s' : '20s'}
+    aria-hidden="true"
+  ></div>
 
   <section class="container" itemscope itemtype="https://schema.org/Person">
     <h1 class="name" itemprop="name">Jean-Sébastien Roy</h1>
@@ -16,8 +29,20 @@
     </p>
 
     <nav class="buttons" aria-label="Navigation principale">
-      <a href="#portfolio" class="text-button" id="portfolioBtn" aria-label="Voir mon portfolio">Portfolio</a>
-      <a href="#contact" class="text-button" id="contactBtn" aria-label="Me contacter">Contact</a>
+      <a
+        href="#portfolio"
+        class="text-button"
+        id="portfolioBtn"
+        aria-label="Voir mon portfolio"
+        on:click|preventDefault={() => openDrawer('portfolio')}
+      >Portfolio</a>
+      <a
+        href="#contact"
+        class="text-button"
+        id="contactBtn"
+        aria-label="Me contacter"
+        on:click|preventDefault={() => openDrawer('contact')}
+      >Contact</a>
     </nav>
   </section>
 </main>
