@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import Drawer from './lib/Drawer.svelte';
+  import Contact from './lib/Contact.svelte';
   import Homepage from './lib/Homepage.svelte';
   import Intro from './lib/Intro.svelte';
   import Portfolio from './lib/Portfolio.svelte';
@@ -60,7 +61,9 @@
   closeLabel="Fermer le formulaire de contact"
   isOpen={activeDrawer === 'contact'}
   on:close={closeDrawer}
-/>
+>
+  <Contact />
+</Drawer>
 <Drawer
   title="Portfolio"
   titleId="portfolioTitle"
