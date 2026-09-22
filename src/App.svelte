@@ -10,6 +10,7 @@
   let isClosing = false;
   let isSlowGrid = false;
   let drawerOpener = null;
+  let showIntro = true;
 
   function openDrawer(drawerName, opener) {
     drawerOpener = opener;
@@ -40,6 +41,8 @@
   }
 
   onMount(() => {
+    try { showIntro = sessionStorage.getItem('intro-seen') !== 'true'; } catch { showIntro = true; }
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) showIntro = false;
     document.addEventListener('click', handleDocumentClick);
 
     return () => {
@@ -50,8 +53,8 @@
 </script>
 
 <div inert={activeDrawer !== null} aria-hidden={activeDrawer !== null}>
-  <Intro />
-  <Homepage slowGrid={isSlowGrid} onOpenDrawer={openDrawer} />
+  {#if showIntro}<Intro on:complete={() => (showIntro = false)} />{/if}
+  <Homepage slowGrid={isSlowGrid} introActive={showIntro} onOpenDrawer={openDrawer} />
 </div>
 
 <div
@@ -70,7 +73,7 @@
   on:close={closeDrawer}
   on:closed={finishClosing}
 >
-  <Contact />
+  <Contact isOpen={activeDrawer === 'contact' && !isClosing} />
 </Drawer>
 <Drawer
   title="Portfolio"

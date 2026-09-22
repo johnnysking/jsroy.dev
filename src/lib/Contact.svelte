@@ -2,6 +2,21 @@
   let isSubmitting = false;
   let resultMessage = '';
   let resultType = '';
+  export let isOpen = false;
+  let captchaContainer;
+  let captchaLoaded = false;
+  $: if (isOpen) loadCaptcha();
+  function loadCaptcha() {
+    if (captchaLoaded || !captchaContainer) return;
+    captchaLoaded = true;
+    if (document.querySelector('script[data-web3forms-client]')) return;
+    const script = document.createElement('script');
+    script.src = 'https://web3forms.com/client/script.js';
+    script.async = true;
+    script.defer = true;
+    script.dataset.web3formsClient = 'true';
+    document.head.appendChild(script);
+  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -146,7 +161,7 @@
       ></textarea>
     </div>
 
-    <div class="h-captcha" data-captcha="true" aria-label="Vérification de sécurité"></div>
+    <div bind:this={captchaContainer} class="h-captcha" data-captcha="true" aria-label="Vérification de sécurité"></div>
 
     <button
       type="submit"

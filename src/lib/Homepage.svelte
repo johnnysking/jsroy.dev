@@ -1,5 +1,6 @@
 <script>
   export let slowGrid = false;
+  export let introActive = true;
   export let onOpenDrawer = () => {};
 
   function openDrawer(drawerName, event) {
@@ -7,7 +8,7 @@
   }
 </script>
 
-<main class="main-content">
+<main class="main-content" class:show-immediately={!introActive}>
   <div
     class="background-grid"
     style:animation-duration={slowGrid ? '40s' : '20s'}
