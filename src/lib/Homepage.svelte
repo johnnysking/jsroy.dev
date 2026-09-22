@@ -37,6 +37,13 @@
         on:click|preventDefault={(event) => openDrawer('portfolio', event)}
       >Portfolio</a>
       <a
+        href="#services"
+        class="text-button"
+        id="servicesBtn"
+        aria-label="Voir mes services"
+        on:click|preventDefault={(event) => openDrawer('services', event)}
+      >Services</a>
+      <a
         href="#contact"
         class="text-button"
         id="contactBtn"

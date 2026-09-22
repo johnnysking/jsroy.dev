@@ -5,17 +5,33 @@
   export let isOpen = false;
   let captchaContainer;
   let captchaLoaded = false;
+  let captchaScriptPromise;
   $: if (isOpen) loadCaptcha();
   function loadCaptcha() {
     if (captchaLoaded || !captchaContainer) return;
-    captchaLoaded = true;
-    if (document.querySelector('script[data-web3forms-client]')) return;
-    const script = document.createElement('script');
-    script.src = 'https://web3forms.com/client/script.js';
-    script.async = true;
-    script.defer = true;
-    script.dataset.web3formsClient = 'true';
-    document.head.appendChild(script);
+    if (!captchaScriptPromise) {
+      const existing = document.querySelector('script[data-web3forms-client]');
+      if (existing) {
+        captchaScriptPromise = new Promise((resolve) => {
+          if (existing.dataset.loaded === 'true') resolve();
+          else existing.addEventListener('load', resolve, { once: true });
+        });
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://web3forms.com/client/script.js';
+        script.async = true;
+        script.defer = true;
+        script.dataset.web3formsClient = 'true';
+        captchaScriptPromise = new Promise((resolve) => {
+          script.addEventListener('load', () => {
+            script.dataset.loaded = 'true';
+            resolve();
+          }, { once: true });
+        });
+        document.head.appendChild(script);
+      }
+    }
+    captchaScriptPromise.then(() => { captchaLoaded = true; });
   }
 
   async function handleSubmit(event) {

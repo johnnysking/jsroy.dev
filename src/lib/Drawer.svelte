@@ -6,6 +6,7 @@
   export let closeLabel;
   export let isOpen = false;
   export let returnFocusTo = null;
+  export let drawerName = '';
 
   const dispatch = createEventDispatcher();
   const focusableSelector =
@@ -76,7 +77,7 @@
 
     isClosing = false;
     document.removeEventListener('keydown', handleKeydown);
-    dispatch('closed');
+    dispatch('closed', drawerName);
     await tick();
 
     if (returnFocusTo?.isConnected) {
@@ -101,7 +102,7 @@
   on:transitionend={handleTransitionEnd}
 >
   <header class="drawer-header">
-    <h3 class="drawer-title" id={titleId}>{title}</h3>
+    <h2 class="drawer-title" id={titleId}>{title}</h2>
     <button bind:this={closeButton} class="close-btn" on:click={closeDrawer} aria-label={closeLabel}>
       <span aria-hidden="true">&times;</span>
     </button>
