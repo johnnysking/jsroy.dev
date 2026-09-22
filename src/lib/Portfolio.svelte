@@ -1,86 +1,113 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
-  import Carousel from './Carousel.svelte';
-  export let isOpen = false;
-  const dispatch = createEventDispatcher();
+  import projects from './projects.js';
 
-  function closeDrawer() {
-    dispatch('close');
+  let expandedProject = null;
+  let imageStates = {};
+
+  function setImageState(url, state) {
+    imageStates = { ...imageStates, [url]: state };
+  }
+
+  function imageLoader(node, url) {
+    const markLoaded = () => {
+      if (typeof node.decode === 'function') {
+        node.decode().catch(() => {}).finally(() => setImageState(url, 'loaded'));
+      } else {
+        setImageState(url, 'loaded');
+      }
+    };
+    const markError = () => setImageState(url, 'error');
+    node.addEventListener('load', markLoaded);
+    node.addEventListener('error', markError);
+    if (node.complete) {
+      node.naturalWidth > 0 ? markLoaded() : markError();
+    }
+    return {
+      destroy() {
+        node.removeEventListener('load', markLoaded);
+        node.removeEventListener('error', markError);
+      },
+    };
+  }
+
+  function toggleProject(url) {
+    expandedProject = expandedProject === url ? null : url;
   }
 </script>
 
-{#if isOpen}
-  <div class="overlay" on:click={closeDrawer}></div>
-{/if}
-
-<div class={`drawer ${isOpen ? 'open' : ''}`}>    
-  <button class="close-button" on:click={closeDrawer}>
-    <span class="close-icon">X</span>
-  </button>
-  <!-- <h2>Portfolio</h2> -->
-  <Carousel />
+<div class="portfolio-grid" itemscope itemtype="https://schema.org/CreativeWork">
+  {#each projects as project (project.url)}
+    <article class="project" itemscope itemtype="https://schema.org/CreativeWork">
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="project-image-link"
+        aria-label={project.ariaLabel}
+      >
+          <img
+            src={project.image}
+            alt={project.imageAlt}
+            class="project-image"
+            class:image-contain={project.imageFit === 'contain'}
+            class:is-loaded={imageStates[project.url] === 'loaded'}
+            class:has-error={imageStates[project.url] === 'error'}
+            use:imageLoader={project.url}
+            itemprop="image"
+          loading="eager"
+          fetchpriority="low"
+          decoding="async"
+          width="350"
+          height="180"
+        />
+        {#if imageStates[project.url] === 'error'}
+          <span class="project-image-error" role="img" aria-label="Image non disponible">Image non disponible</span>
+        {/if}
+      </a>
+      <h4 class="project-title">
+        <a href={project.url} target="_blank" rel="noopener noreferrer" itemprop="url">
+          <span itemprop="name">{project.name}</span>
+        </a>
+      </h4>
+      <p class="project-description" itemprop="description">{project.description}</p>
+      <div class="project-actions">
+        <button
+          type="button"
+          class="project-details-toggle"
+          aria-expanded={expandedProject === project.url}
+          aria-controls={`project-details-${project.url.replace(/[^a-z0-9]+/gi, '-')}`}
+          on:click={() => toggleProject(project.url)}
+        >{expandedProject === project.url ? 'Masquer les détails' : 'Voir les détails'}</button>
+        <a
+          class="project-visit-link project-visit-link--card"
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={project.ariaLabel}
+        >Visiter le site <span aria-hidden="true">↗</span></a>
+      </div>
+      {#if expandedProject === project.url}
+        <div
+          class="project-details"
+          id={`project-details-${project.url.replace(/[^a-z0-9]+/gi, '-')}`}
+        >
+          <h5>Fonctionnalités développées et intégrées</h5>
+          <ul>
+            {#each project.features as item}
+              <li>{item}</li>
+            {/each}
+          </ul>
+          <p class="project-more">Et plus encore…</p>
+          <p class="project-technologies">{project.technologies}</p>
+          <a
+            class="project-visit-link"
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            itemprop="url"
+          >Visiter le site <span aria-hidden="true">↗</span></a>
+        </div>
+      {/if}
+    </article>
+  {/each}
 </div>
-
-<style>
-  .drawer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 90vw;
-    background: rgb(0, 0, 0);
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    transform: translateX(-100%);
-    transition: transform 1.5s ease;
-    z-index: 1000;
-    padding: 20px;
-  }
-
-  .drawer.open {
-    transform: translateX(0);
-  }
-
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
-
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1001;
-    padding: 5px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-
-  .close-button:hover .close-icon {
-    transform: rotate(90deg); /* Rotate the X */
-  }
-
-  .close-button:active {
-    transform: scale(0.9); /* Slightly shrink on click */
-    opacity: 0.8; /* Reduce opacity on click */
-  }
-
-  .close-icon {
-    display: inline-block;
-    transition: transform 0.3s ease; /* Smooth rotation */
-  }
-
-  h2 {
-    color: white;
-    text-align: center;
-    margin-top: 60px; /* Adjust if needed to ensure it doesn't overlap the close button */
-  }
-</style>
