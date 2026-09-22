@@ -1,5 +1,11 @@
 <script>
   import projects from './projects.js';
+
+  let expandedProject = null;
+
+  function toggleProject(url) {
+    expandedProject = expandedProject === url ? null : url;
+  }
 </script>
 
 <div class="portfolio-grid" itemscope itemtype="https://schema.org/CreativeWork">
@@ -28,6 +34,41 @@
         </a>
       </h4>
       <p class="project-description" itemprop="description">{project.description}</p>
+      <button
+        type="button"
+        class="project-details-toggle"
+        aria-expanded={expandedProject === project.url}
+        aria-controls={`project-details-${project.url.replace(/[^a-z0-9]+/gi, '-')}`}
+        on:click={() => toggleProject(project.url)}
+      >{expandedProject === project.url ? 'Masquer les détails' : 'Voir les détails'}</button>
+      {#if expandedProject === project.url}
+        <div
+          class="project-details"
+          id={`project-details-${project.url.replace(/[^a-z0-9]+/gi, '-')}`}
+        >
+          <h5>Mon rôle</h5>
+          <p>{project.role}</p>
+          <h5>Travail réalisé</h5>
+          <ul>
+            {#each project.workItems as item}
+              <li>{item}</li>
+            {/each}
+          </ul>
+          <h5>Technologies</h5>
+          <div class="project-technologies">
+            {#each project.technologies as technology}
+              <span class="technology-tag">{technology}</span>
+            {/each}
+          </div>
+          <a
+            class="project-visit-link"
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            itemprop="url"
+          >Visiter le site <span aria-hidden="true">↗</span></a>
+        </div>
+      {/if}
     </article>
   {/each}
 </div>
