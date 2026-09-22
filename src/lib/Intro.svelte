@@ -8,7 +8,7 @@
   }
 </script>
 
-<div class="fade-intro" id="fadeIntro" on:animationend={finishNaturally}>
-  <h1>Jean-Sébastien Roy</h1>
+<div class="fade-intro" id="fadeIntro" aria-hidden="true" on:animationend={finishNaturally}>
+  <div class="intro-name">Jean-Sébastien Roy</div>
   <h2>Développeur Web</h2>
 </div>
