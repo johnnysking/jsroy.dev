@@ -46,17 +46,17 @@
           class="project-details"
           id={`project-details-${project.url.replace(/[^a-z0-9]+/gi, '-')}`}
         >
-          <h5>Mon rôle</h5>
-          <p>{project.role}</p>
-          <h5>Travail réalisé</h5>
+          <h5>Le projet</h5>
+          <p>{project.mandate}</p>
+          <h5>Réalisation</h5>
           <ul>
-            {#each project.workItems as item}
+            {#each project.solutionItems as item}
               <li>{item}</li>
             {/each}
           </ul>
-          <h5>Technologies</h5>
+          <h5>Outils utilisés</h5>
           <div class="project-technologies">
-            {#each project.technologies as technology}
+            {#each project.expertise as technology}
               <span class="technology-tag">{technology}</span>
             {/each}
           </div>

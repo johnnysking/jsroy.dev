@@ -19,13 +19,12 @@
     <h2 class="title" itemprop="jobTitle">Développeur Web</h2>
 
     <p class="description" itemprop="description">
-      J'accompagne mes clients dans la création de sites personnalisés, de
-      portfolios ou de boutiques en ligne sur mesure. Mon approche est
-      centrée sur vos besoins spécifiques. Je m'engage à vous fournir des
-      solutions web de qualité qui reflètent votre identité et captivent
-      votre public cible. N'hésitez pas à me contacter pour discuter de
-      votre projet et découvrir comment je peux vous aider à atteindre vos
-      objectifs en ligne.
+      J’accompagne mes clients dans la création de sites Web personnalisés,
+      qu’il s’agisse de portfolios, de boutiques en ligne ou de projets sur
+      mesure. Mon approche est centrée sur vos besoins afin de développer une
+      solution qui reflète votre identité et répond réellement à vos
+      objectifs. N’hésitez pas à me contacter pour discuter de votre projet
+      et voir comment je peux vous aider à le concrétiser.
     </p>
 
     <nav class="buttons" aria-label="Navigation principale">
