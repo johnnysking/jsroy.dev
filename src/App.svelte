@@ -5,16 +5,25 @@
   import Homepage from './lib/Homepage.svelte';
   import Intro from './lib/Intro.svelte';
   import Portfolio from './lib/Portfolio.svelte';
+  import Services from './lib/Services.svelte';
 
   let activeDrawer = null;
   let isClosing = false;
   let isSlowGrid = false;
   let drawerOpener = null;
+  let pendingDrawer = null;
+  let pendingDrawerOpener = null;
   let showIntro = true;
 
   function openDrawer(drawerName, opener) {
     drawerOpener = opener;
     activeDrawer = drawerName;
+  }
+
+  function openContactFromServices() {
+    pendingDrawer = 'contact';
+    pendingDrawerOpener = document.getElementById('contactBtn');
+    closeDrawer();
   }
 
   function closeDrawer() {
@@ -25,7 +34,19 @@
     isClosing = true;
   }
 
-  function finishClosing() {
+  function finishClosing(event) {
+    const drawerName = event.detail;
+    if (activeDrawer !== drawerName) {
+      return;
+    }
+    if (pendingDrawer) {
+      activeDrawer = pendingDrawer;
+      drawerOpener = pendingDrawerOpener;
+      pendingDrawer = null;
+      pendingDrawerOpener = null;
+      isClosing = false;
+      return;
+    }
     activeDrawer = null;
     isClosing = false;
   }
@@ -66,6 +87,7 @@
 
 <Drawer
   title="Contact"
+  drawerName="contact"
   titleId="contactTitle"
   closeLabel="Fermer le panneau Contact"
   isOpen={activeDrawer === 'contact' && !isClosing}
@@ -76,7 +98,20 @@
   <Contact isOpen={activeDrawer === 'contact' && !isClosing} />
 </Drawer>
 <Drawer
+  title="Services"
+  drawerName="services"
+  titleId="servicesTitle"
+  closeLabel="Fermer le panneau Services"
+  isOpen={activeDrawer === 'services' && !isClosing}
+  returnFocusTo={activeDrawer === 'services' ? drawerOpener : null}
+  on:close={closeDrawer}
+  on:closed={finishClosing}
+>
+  <Services on:contact={openContactFromServices} />
+</Drawer>
+<Drawer
   title="Portfolio"
+  drawerName="portfolio"
   titleId="portfolioTitle"
   closeLabel="Fermer le panneau Portfolio"
   isOpen={activeDrawer === 'portfolio' && !isClosing}
