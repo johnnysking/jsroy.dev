@@ -1,11 +1,12 @@
 import cdadaImage from '../../assets/cdada.png';
+import lartisaneImage from '../../assets/lartisane.png';
 import saindonsImage from '../../assets/saindons.png';
 import dianeRuestImage from '../../assets/DianeRuest.png';
 
 const projects = [
   {
     name: "Centre d'art Argenteuil",
-    url: 'https://cdada.ca/',
+    url: 'https://centredartargenteuil.com/',
     image: cdadaImage,
     imageAlt: "Capture d'écran du site web du Centre d'art Argenteuil - Boutique en ligne d'œuvres d'art",
     description: "Boutique en ligne du Centre d’art d’Argenteuil réunissant les artistes, les œuvres et les inscriptions aux ateliers.",
@@ -20,6 +21,17 @@ const projects = [
       'Soutien technique et améliorations du site selon les besoins du Centre',
     ],
     expertise: ['Shopify', 'Liquid', 'JavaScript', 'CSS', 'commerce électronique', 'Google Analytics'],
+  },
+  {
+    name: 'L’Artisane',
+    url: 'https://lartisane.ca/',
+    image: lartisaneImage,
+    imageAlt: "Capture d'écran du site de L’Artisane",
+    description: 'Boutique en ligne de L’Artisane présentant ses produits naturels faits à la main, ses collections et ses points de vente.',
+    ariaLabel: 'Voir le site de L’Artisane',
+    mandate: '',
+    solutionItems: [],
+    expertise: [],
   },
   {
     name: 'Suzanne Saindon artiste peintre',
