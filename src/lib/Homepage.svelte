@@ -16,7 +16,7 @@
   ></div>
 
   <section class="container" itemscope itemtype="https://schema.org/Person">
-    <h1 class="name" itemprop="name">Jean-Sébastien Roy</h1>
+    <h1 class="name" itemprop="name" tabindex="-1">Jean-Sébastien Roy</h1>
     <h2 class="title" itemprop="jobTitle">Développeur Web</h2>
 
     <p class="description" itemprop="description">
