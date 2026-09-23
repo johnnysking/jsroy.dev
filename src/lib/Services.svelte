@@ -4,23 +4,23 @@
 </script>
 
 <div class="services-content">
-  <p>Sites Web sur mesure pour présenter une démarche artistique, développer une activité commerciale ou soutenir le travail d’une organisation. Chaque projet est conçu autour de son contenu, de ses fonctionnalités et des personnes qui devront le faire évoluer.</p>
+  <p>Sites web sur mesure, conçus à Québec pour des artistes, des entreprises et des organismes d'ici. Chaque projet est pensé autour de son contenu, de ses fonctionnalités pis des gens qui vont le faire vivre.</p>
 
   <section>
-    <h3>Portfolios et sites d’artistes</h3>
-    <p>Des environnements numériques construits à partir du travail de l’artiste plutôt qu’autour d’un modèle prédéfini. L’architecture du contenu, le rythme de navigation et le traitement des images sont développés en fonction du corpus présenté. Taxonomies, galeries dynamiques, lightbox sur mesure et interfaces de publication assurent une organisation cohérente des œuvres, des expositions et des textes.</p>
+    <h3>Portfolios et sites d'artistes</h3>
+    <p>Des environnements numériques pensés à partir de ton travail — modèle prédéfini ou concept sur mesure. L'architecture, la navigation pis le traitement des images s'adaptent à ton corpus. Taxonomies, galeries dynamiques, lightbox sur mesure pis interfaces de publication rendent ton univers accessible en ligne.</p>
   </section>
   <section>
     <h3>Commerce en ligne</h3>
-    <p>Des boutiques conçues en fonction de l’expérience d’achat, des processus de vente et des méthodes de gestion propres à l’entreprise. La structure du catalogue, les données des produits et les parcours de commande sont adaptés aux inscriptions, aux réservations, à la vente de billets, aux règles de livraison, au ramassage et au point de vente. Le développement couvre également la migration des données, les intégrations et l’automatisation des tâches propres au projet.</p>
+    <p>Des boutiques taillées sur ton commerce — catalogue, réservations, billetterie, ramassage ou livraison. La structure colle à tes méthodes de gestion pis à l'expérience d'achat. Migration de données, intégrations tierces, automatisation : le tout pensé pour que la mécanique tourne seule.</p>
   </section>
   <section>
     <h3>Sites pour entreprises et organismes</h3>
-    <p>Des plateformes structurées autour du contenu, des services et du fonctionnement propre à chaque organisation. Modèles de contenu personnalisés, outils de gestion, formulaires, comptes utilisateurs, rôles, permissions et services externes sont réunis dans une architecture cohérente. La sécurité, les sauvegardes, le versionnement et le déploiement sont intégrés dès la conception pour assurer la continuité, la maintenance et l’évolution du site.</p>
+    <p>Des plateformes structurées autour de ton contenu, tes services pis ton fonctionnement. Comptes utilisateurs, formulaires, outils de gestion pis services externes travaillent ensemble. Sécurité, sauvegardes pis déploiement sont pensés dès le départ pour que le site vive longtemps.</p>
   </section>
   <section>
     <h3>Développement sur mesure et automatisation</h3>
-    <p>Certains projets demandent davantage qu’une interface ou une configuration standard. Des scripts et outils personnalisés peuvent être développés pour traiter ou migrer des données, automatiser des tâches, configurer des règles de livraison complexes, gérer des liens et programmes d’affiliation ou relier différents services. Ces solutions sont intégrées directement au fonctionnement du site afin de répondre à des besoins précis qui ne sont pas couverts par les outils existants.</p>
+    <p>Quand standard ne suffit pas. Scripts, outils pis automatisations sur mesure: migration de données, tâches répétitives, règles complexes ou intégration de services. Des solutions qui s'imbriquent directement dans ton site pour des besoins précis que les outils existants ne couvrent pas.</p>
   </section>
   <div class="services-cta">
     <p>Vous avez un projet en tête?</p>
