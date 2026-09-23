@@ -4,9 +4,12 @@
 </script>
 
 <div class="services-content">
-  <p>Sites Web sur mesure pour présenter une démarche artistique, développer une activité commerciale ou soutenir le travail d’une organisation. Chaque projet est conçu autour de son contenu, de ses fonctionnalités et des personnes qui devront le faire évoluer.</p>
-
   <section>
+    <h3>Conception et développement Web</h3>
+    <p class="services-intro">Qu’il s’agisse de présenter une démarche artistique, de développer une activité commerciale ou de soutenir le travail d’une organisation, chaque projet est structuré en fonction de son contenu, de ses fonctionnalités et des personnes qui devront le faire évoluer.</p>
+  </section>
+
+  <section class="services-first-section">
     <h3>Portfolios et sites d’artistes</h3>
     <p>Des environnements numériques construits à partir du travail de l’artiste plutôt qu’autour d’un modèle prédéfini. L’architecture du contenu, le rythme de navigation et le traitement des images sont développés en fonction du corpus présenté. Taxonomies, galeries dynamiques, lightbox sur mesure et interfaces de publication assurent une organisation cohérente des œuvres, des expositions et des textes.</p>
   </section>
