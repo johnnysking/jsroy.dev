@@ -3,7 +3,6 @@
   import Drawer from './lib/Drawer.svelte';
   import Contact from './lib/Contact.svelte';
   import Homepage from './lib/Homepage.svelte';
-  import Intro from './lib/Intro.svelte';
   import Portfolio from './lib/Portfolio.svelte';
   import Services from './lib/Services.svelte';
 
@@ -13,7 +12,6 @@
   let drawerOpener = null;
   let pendingDrawer = null;
   let pendingDrawerOpener = null;
-  let showIntro = true;
 
   function openDrawer(drawerName, opener) {
     drawerOpener = opener;
@@ -62,8 +60,6 @@
   }
 
   onMount(() => {
-    try { showIntro = sessionStorage.getItem('intro-seen') !== 'true'; } catch { showIntro = true; }
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) showIntro = false;
     document.addEventListener('click', handleDocumentClick);
 
     return () => {
@@ -74,8 +70,7 @@
 </script>
 
 <div inert={activeDrawer !== null} aria-hidden={activeDrawer !== null}>
-  {#if showIntro}<Intro on:complete={() => (showIntro = false)} />{/if}
-  <Homepage slowGrid={isSlowGrid} introActive={showIntro} onOpenDrawer={openDrawer} />
+  <Homepage slowGrid={isSlowGrid} onOpenDrawer={openDrawer} />
 </div>
 
 <div
