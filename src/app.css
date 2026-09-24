@@ -133,6 +133,12 @@ body {
   padding: 0.5rem 0;
 }
 
+.nav-action {
+  border: 0;
+  background: transparent;
+  font: inherit;
+}
+
 .text-button::after {
   content: "";
   position: absolute;
@@ -929,13 +935,35 @@ body {
     text-decoration: none;
   }
 
+  .mobile-menu button {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    width: 100%;
+    padding: 0 1rem;
+    border: 0;
+    border-top: 1px solid #333333;
+    background: transparent;
+    color: #ffffff;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
   .mobile-menu a:hover,
-  .mobile-menu a:focus-visible {
+  .mobile-menu a:focus-visible,
+  .mobile-menu button:hover,
+  .mobile-menu button:focus-visible {
     color: #cccccc;
     background: #111111;
   }
 
   .mobile-menu a:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: -2px;
+  }
+
+  .mobile-menu button:focus-visible {
     outline: 2px solid #ffffff;
     outline-offset: -2px;
   }
@@ -1757,12 +1785,18 @@ body {
 
 .portfolio-section .project-details {
   grid-column: 2 / -1;
+  width: 100%;
   min-width: 0;
   margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid #333333;
   background: transparent;
   animation: portfolioDetailsIn 180ms ease-out;
+}
+
+/* Legacy alternating selectors must not affect the typographic detail panel. */
+.portfolio-section .project.project-even .project-details {
+  grid-column: 1 / -1;
 }
 
 .portfolio-section .project-details h5 {
@@ -1782,7 +1816,8 @@ body {
 .portfolio-section .project-more {
   color: #cccccc;
   line-height: 1.6;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .portfolio-section .project-more {
@@ -1818,6 +1853,11 @@ body {
   .portfolio-section .project-number {
     grid-column: 1;
     grid-row: 1 / span 4;
+  }
+
+  .portfolio-section .project-details,
+  .portfolio-section .project.project-even .project-details {
+    grid-column: 1 / -1;
   }
 
   .portfolio-section .project-meta {
