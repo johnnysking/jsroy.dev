@@ -5,6 +5,7 @@
   import Homepage from './lib/Homepage.svelte';
   import Portfolio from './lib/Portfolio.svelte';
   import Services from './lib/Services.svelte';
+  import SiteHeader from './lib/SiteHeader.svelte';
 
   let activeDrawer = null;
   let isClosing = false;
@@ -60,17 +61,29 @@
   }
 
   onMount(() => {
+    const previousScrollRestoration = history.scrollRestoration;
+    history.scrollRestoration = 'manual';
+    if (window.location.hash) {
+      history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+    }
+    window.scrollTo(0, 0);
     document.addEventListener('click', handleDocumentClick);
 
     return () => {
       document.removeEventListener('click', handleDocumentClick);
+      history.scrollRestoration = previousScrollRestoration;
     };
   });
 
 </script>
 
-<div inert={activeDrawer !== null} aria-hidden={activeDrawer !== null}>
-  <Homepage slowGrid={isSlowGrid} onOpenDrawer={openDrawer} />
+<div id="top" class="site-content" inert={activeDrawer !== null} aria-hidden={activeDrawer !== null}>
+  <SiteHeader onOpenDrawer={openDrawer} />
+  <Homepage slowGrid={isSlowGrid} />
+  <section id="portfolio" class="page-section portfolio-section" aria-labelledby="portfolio-heading">
+    <h2 id="portfolio-heading">Projets sélectionnés</h2>
+    <Portfolio />
+  </section>
 </div>
 
 <div
@@ -103,16 +116,4 @@
   on:closed={finishClosing}
 >
   <Services on:contact={openContactFromServices} />
-</Drawer>
-<Drawer
-  title="Portfolio"
-  drawerName="portfolio"
-  titleId="portfolioTitle"
-  closeLabel="Fermer le panneau Portfolio"
-  isOpen={activeDrawer === 'portfolio' && !isClosing}
-  returnFocusTo={drawerOpener}
-  on:close={closeDrawer}
-  on:closed={finishClosing}
->
-  <Portfolio />
 </Drawer>

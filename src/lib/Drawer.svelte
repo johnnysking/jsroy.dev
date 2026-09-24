@@ -92,6 +92,8 @@
 
 <aside
   bind:this={dialogElement}
+  class:drawer-services={drawerName === 'services'}
+  class:drawer-contact={drawerName === 'contact'}
   class="drawer"
   class:open={isOpen}
   role="dialog"
