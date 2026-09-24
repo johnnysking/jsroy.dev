@@ -6,7 +6,7 @@
 <div class="services-content">
   <section>
     <h3>Conception et développement Web</h3>
-    <p class="services-intro">Qu’il s’agisse de présenter une démarche artistique, de développer une activité commerciale ou de soutenir le travail d’une organisation, chaque projet est structuré en fonction de son contenu, de ses fonctionnalités et des personnes qui devront le faire évoluer.</p>
+    <p class="services-intro">J’accompagne mes clients dans la création de sites Web personnalisés, qu’il s’agisse de portfolios, de boutiques en ligne ou de projets sur mesure. Mon approche est centrée sur vos besoins afin de développer une solution qui reflète votre identité et répond réellement à vos objectifs.</p>
   </section>
 
   <section class="services-first-section">
