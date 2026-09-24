@@ -61,8 +61,8 @@
   <a class="site-logo" href="#top" aria-label="Accueil jsroy.dev"><img class="site-logo-image" src={logo} alt="jsroy.dev" /></a>
   <nav class="desktop-nav" aria-label="Navigation principale">
     <a class="text-button" href="#portfolio">Portfolio</a>
-    <a class="text-button" href="#services" on:click|preventDefault={(event) => open('services', event)}>Services</a>
-    <a class="text-button" id="contactBtn" href="#contact" on:click|preventDefault={(event) => open('contact', event)}>Contact</a>
+    <button class="text-button nav-action" type="button" on:click={(event) => openDrawer('services', event)}>Services</button>
+    <button class="text-button nav-action" id="contactBtn" type="button" on:click={(event) => openDrawer('contact', event)}>Contact</button>
   </nav>
   <button
     bind:this={menuButton}
@@ -84,7 +84,7 @@
   <div class="mobile-menu-overlay" aria-hidden="true" on:click={() => closeMenu()}></div>
   <nav id="mobile-navigation" class="mobile-menu" aria-label="Navigation mobile">
     <a bind:this={firstMenuLink} href="#portfolio" on:click={() => closeMenu(false)}>Portfolio</a>
-    <a href="#services" on:click|preventDefault={(event) => openDrawer('services', event)}>Services</a>
-    <a href="#contact" on:click|preventDefault={(event) => openDrawer('contact', event)}>Contact</a>
+    <button type="button" on:click={(event) => openDrawer('services', event)}>Services</button>
+    <button type="button" on:click={(event) => openDrawer('contact', event)}>Contact</button>
   </nav>
 {/if}
