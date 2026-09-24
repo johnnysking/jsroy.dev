@@ -53,7 +53,7 @@
   function handleDocumentClick(event) {
     const target = event.target;
 
-    if (target instanceof Element && target.closest('.text-button, .drawer')) {
+    if (target instanceof Element && target.closest('.text-button, .drawer, .mobile-menu, .mobile-menu-toggle, .mobile-menu-overlay')) {
       return;
     }
 
