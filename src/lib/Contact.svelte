@@ -1,20 +1,26 @@
 <script>
+  import { onDestroy } from 'svelte';
+
   let isSubmitting = false;
   let resultMessage = '';
   let resultType = '';
   export let isOpen = false;
   let captchaContainer;
-  let captchaLoaded = false;
+  let captchaRendered = false;
+  let captchaObserver;
   let captchaScriptPromise;
   $: if (isOpen) loadCaptcha();
   function loadCaptcha() {
-    if (captchaLoaded || !captchaContainer) return;
+    if (!captchaContainer || captchaRendered) return;
     if (!captchaScriptPromise) {
       const existing = document.querySelector('script[data-web3forms-client]');
       if (existing) {
         captchaScriptPromise = new Promise((resolve) => {
-          if (existing.dataset.loaded === 'true') resolve();
-          else existing.addEventListener('load', resolve, { once: true });
+          if (existing.dataset.loaded === 'true' || existing.readyState === 'complete') {
+            resolve();
+          } else {
+            existing.addEventListener('load', resolve, { once: true });
+          }
         });
       } else {
         const script = document.createElement('script');
@@ -31,8 +37,34 @@
         document.head.appendChild(script);
       }
     }
-    captchaScriptPromise.then(() => { captchaLoaded = true; });
+    captchaScriptPromise.then(() => {
+      if (!captchaContainer || captchaRendered) return;
+
+      // The Web3Forms client observes data-captcha containers. Re-touch the
+      // attribute when the script was already loaded before Svelte mounted it.
+      captchaContainer.removeAttribute('data-captcha');
+      captchaContainer.setAttribute('data-captcha', 'true');
+
+      captchaObserver = new MutationObserver(() => {
+        if (captchaContainer?.children.length) {
+          captchaRendered = true;
+          captchaObserver.disconnect();
+          captchaObserver = undefined;
+        }
+      });
+      captchaObserver.observe(captchaContainer, { childList: true });
+
+      if (captchaContainer.children.length) {
+        captchaRendered = true;
+        captchaObserver.disconnect();
+        captchaObserver = undefined;
+      }
+    });
   }
+
+  onDestroy(() => {
+    captchaObserver?.disconnect();
+  });
 
   async function handleSubmit(event) {
     event.preventDefault();

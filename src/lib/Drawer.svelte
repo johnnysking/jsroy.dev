@@ -105,7 +105,7 @@
 >
   <header class="drawer-header">
     <h2 class="drawer-title" id={titleId}>{title}</h2>
-    <button bind:this={closeButton} class="close-btn" on:click={closeDrawer} aria-label={closeLabel}>
+    <button type="button" bind:this={closeButton} class="close-btn" on:click={closeDrawer} aria-label={closeLabel}>
       <span aria-hidden="true">&times;</span>
     </button>
   </header>
